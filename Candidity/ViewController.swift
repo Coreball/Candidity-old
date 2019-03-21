@@ -23,6 +23,22 @@ class ViewController: UIViewController {
         videoPreview()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        showInfoMessage()
+    }
+    
+    func showInfoMessage() {
+        let message = """
+            A Minimalist Camera App
+
+            One Finger Tap - Photo
+            Two Finger Tap - Video
+            """
+        let alert = UIAlertController(title: "Candidity", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Let's Go!", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func videoPreview() {
         let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: cameraControl.captureSession)
         videoPreviewLayer.frame = view.layer.bounds
