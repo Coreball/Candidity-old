@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C366E35224436EE00973203 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C366E34224436EE00973203 /* CameraController.swift */; };
 		3CE8CFCA223F2B8D00471FAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE8CFC9223F2B8D00471FAE /* AppDelegate.swift */; };
 		3CE8CFCC223F2B8D00471FAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE8CFCB223F2B8D00471FAE /* ViewController.swift */; };
 		3CE8CFCF223F2B8D00471FAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CE8CFCD223F2B8D00471FAE /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C366E34224436EE00973203 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		3CE8CFC6223F2B8D00471FAE /* Candidity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Candidity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE8CFC9223F2B8D00471FAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CE8CFCB223F2B8D00471FAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				3CE8CFD0223F2B8E00471FAE /* Assets.xcassets */,
 				3CE8CFD2223F2B8E00471FAE /* LaunchScreen.storyboard */,
 				3CE8CFD5223F2B8E00471FAE /* Info.plist */,
+				3C366E34224436EE00973203 /* CameraController.swift */,
 			);
 			path = Candidity;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C366E35224436EE00973203 /* CameraController.swift in Sources */,
 				3CE8CFCC223F2B8D00471FAE /* ViewController.swift in Sources */,
 				3CE8CFCA223F2B8D00471FAE /* AppDelegate.swift in Sources */,
 			);
