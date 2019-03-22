@@ -27,6 +27,10 @@ class ViewController: UIViewController {
         showInfoMessage()
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     func showInfoMessage() {
         let message = """
             A Minimalist Camera App
