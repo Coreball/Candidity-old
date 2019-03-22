@@ -13,9 +13,11 @@ class CameraController {
     
     let captureSession = AVCaptureSession()
     let photoOutput = AVCapturePhotoOutput()
+    var livePhotoMode = false
     
     func prepare() {
         captureSession.beginConfiguration()
+        
         let videoDevice = AVCaptureDevice.default(for: .video)
 //        guard let videoInput = try? AVCaptureDeviceInput(device: videoDevice!),
 //            captureSession.canAddInput(videoInput) else {
@@ -30,13 +32,14 @@ class CameraController {
         if let audioInput = try? AVCaptureDeviceInput(device: audioDevice!), captureSession.canAddInput(audioInput) {
             captureSession.addInput(audioInput)
         }
+        
         photoOutput.isHighResolutionCaptureEnabled = true
-//        photoOutput.isLivePhotoCaptureEnabled = photoOutput.isLivePhotoCaptureSupported
         guard captureSession.canAddOutput(photoOutput) else {
             return
         }
         captureSession.sessionPreset = .photo
         captureSession.addOutput(photoOutput)
+        
         // Add movie stuff later
         captureSession.commitConfiguration()
         captureSession.startRunning()
@@ -44,14 +47,29 @@ class CameraController {
     
     func shootPhoto() {
         let photoSettings: AVCapturePhotoSettings
-        if photoOutput.availablePhotoCodecTypes.contains(.hevc) {
+        let captureIsLivePhoto = livePhotoMode && photoOutput.isLivePhotoCaptureSupported
+        photoOutput.isLivePhotoCaptureEnabled = photoOutput.isLivePhotoCaptureSupported
+        
+        if photoOutput.availablePhotoCodecTypes.contains(.hevc) { // Use the fancy codec if available
             photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
         } else {
             photoSettings = AVCapturePhotoSettings()
         }
+        print("Live Photos Supported:  \(photoOutput.isLivePhotoCaptureSupported)")
+        if captureIsLivePhoto { // If live photos is on use it
+            print("Capture is a live photo")
+            let livePhotoMovieName = NSUUID().uuidString
+            let livePhotoMoviePath = (NSTemporaryDirectory() as NSString).appendingPathComponent((livePhotoMovieName as NSString).appendingPathExtension("mov")!)
+            photoSettings.livePhotoMovieFileURL = URL(fileURLWithPath: livePhotoMoviePath)
+        }
+        print("Live Photo URL:  \(photoSettings.livePhotoMovieFileURL)")
+        
         photoSettings.flashMode = .auto // Later add status indicators for live(enabled/inuse)/flash/recording
         photoSettings.isAutoStillImageStabilizationEnabled = photoOutput.isStillImageStabilizationSupported
         
+        let captureProcessor = CaptureProcessor(isLivePhoto: captureIsLivePhoto)
+        photoOutput.capturePhoto(with: photoSettings, delegate: captureProcessor)
+        print("Shot Photo")
     }
     
 }

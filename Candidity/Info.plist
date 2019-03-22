@@ -38,7 +38,7 @@
 	<string>This is a camera app</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Audio for videos and live photos</string>
-	<key>NSPhotoLibraryUsageDescription</key>
+	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Save photos</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

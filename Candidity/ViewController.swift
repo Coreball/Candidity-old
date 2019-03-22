@@ -50,7 +50,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func oneTouch(_ sender: UITapGestureRecognizer) {
-        print("ABDSUHFE")
+        print("One Finger Tap Photo")
+        cameraControl.shootPhoto()
     }
     
     @IBAction func twoTouch(_ sender: UITapGestureRecognizer) {
